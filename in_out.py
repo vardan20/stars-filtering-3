@@ -20,12 +20,16 @@ class InputData:
 
 def get_in() -> InputData:
     """takes all required input from user"""
-    print("Please Enter equatorial coordinates, please separate them with a whitespace:", end=' ')
-    ra, dec = map(float, input().split())
-    print("Please Enter horizontal and vertical FOV, please separate them with a whitespace:", end=' ')
-    fov_h, fov_v = map(float, input().split())
-    n = int(input("Please Enter the number of Stars N: "))
-    return InputData(ra, dec, fov_h, fov_v, n)
+    while True:
+        try:
+            print("Please Enter equatorial coordinates, please separate them with a whitespace:", end=' ')
+            ra, dec = map(float, input().split())
+            print("Please Enter horizontal and vertical FOV, please separate them with a whitespace:", end=' ')
+            fov_h, fov_v = map(float, input().split())
+            n = int(input("Please Enter the number of Stars N: "))
+            return InputData(ra, dec, fov_h, fov_v, n)
+        except:
+            print("Wrong Input Format, Please try again")
 
 
 def read_store(dct: list, filename: str, ra: float, dec: float, fov_h: float, fov_v: float) -> tuple:
