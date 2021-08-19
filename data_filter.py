@@ -7,8 +7,6 @@ from configparser import ConfigParser
 config = ConfigParser()
 config.read('config.ini')
 
-"""all characteristics of stars, such as RA, DEC, etc."""
-characteristics = []
 """number of stars in table"""
 star_cnt = 0
 
@@ -49,7 +47,6 @@ def run() -> None:
     """
 
     global star_cnt
-    global characteristics
     print("Data Filter process is started")
     inp = in_out.get_in()
     start_time = time.time()
@@ -73,7 +70,6 @@ def run() -> None:
     'dist' which shows the distance between given point in input
     and the particular star
     '''
-    characteristics.append('dist')
     for i in range(star_cnt):
         star1 = star.Star(inp.ra, inp.dec)
         star2 = star.Star(table[i].ra, table[i].dec)
